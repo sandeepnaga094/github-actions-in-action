@@ -29,5 +29,8 @@ jobs:
       - name: echo variable
         run: echo ${{vars.NUMBER}}
       - name: echo secret
-        run: echo ${{secrets.NAME}}
+        run: |
+              if ${{ secrets.NAME == "dummy" }}
+                echo ${{secrets.NAME}}
+        
 
