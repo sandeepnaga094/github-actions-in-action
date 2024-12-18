@@ -1,2 +1,2 @@
-# github-actions-in-action
+# Environment
 this is a repo to demo and practice github actions
