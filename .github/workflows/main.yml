@@ -30,7 +30,5 @@ jobs:
         run: echo ${{vars.NUMBER}}
       - name: echo secret
         run: |
-              if ${{ secrets.NAME == "dummy" }}
-                echo ${{secrets.NAME}}
-        
+              echo ${{secrets.NAME}} == 'dummy'        
 
