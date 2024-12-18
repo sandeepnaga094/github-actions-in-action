@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  docker-pull:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -33,3 +33,6 @@ jobs:
               sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
               sudo apt install docker-ce
               docker -v
+      - name: pull nginx image
+        run: |
+              docker pull nginx
