@@ -1,2 +1,2 @@
 
-curl ${url}
+curl '${url}/${post_number}'
