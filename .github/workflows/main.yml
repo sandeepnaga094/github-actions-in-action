@@ -54,6 +54,9 @@ jobs:
     needs: [mvn-app-build]
     name: Analyze (${{ matrix.language }})
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    defaults:
+      run:
+        working-directory: ./demo
     permissions:
       # required for all workflows
       security-events: write
@@ -84,7 +87,6 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        cd demo
         echo 'If you are using a "manual" build mode for one or more of the' \
           'languages you are analyzing, replace this with the commands to build' \
           'your code, for example:'
