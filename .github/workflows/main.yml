@@ -27,6 +27,7 @@ jobs:
             mvn clean install
   mvn-save-artifact:
     runs-on: ubuntu-latest
+    needs: [mvn-app-build]
     steps:
       - name: save artifacts
         uses: actions/upload-artifact@v3
