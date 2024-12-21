@@ -25,8 +25,11 @@ jobs:
       run: |
             cd demo
             mvn clean install
-    - name: save artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-artifacts
-        path: demo/target/
+  mvn-save-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: save artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: demo/target/
