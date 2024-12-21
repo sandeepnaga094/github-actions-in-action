@@ -2,15 +2,13 @@ name: 009
 
 on:
   push:
-    branches: [ "main","009" ]
+    branches: [ "main", "009" ]
   pull_request:
     branches: [ "main" ]
-
   workflow_dispatch:
 
 jobs:
   mvn-app-build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -23,15 +21,18 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: |
-            cd demo
-            mvn clean install
-    - name: save artifacts
+        cd demo
+        mvn clean install
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
       with:
         name: build-artifacts
         path: demo/target/
+
   mvn-unit-test:
     runs-on: ubuntu-latest
-    # needs: [mvn-app-build]
+    needs: [mvn-app-build]
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -40,8 +41,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: run tests
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: build-artifacts
+        path: demo/target/
+    - name: Run unit tests
       run: |
-            cd demo
-            mvn test
-
+        cd demo
+        mvn test
