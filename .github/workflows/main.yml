@@ -26,8 +26,8 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: build-artifacts
-        path: demo/target/
+        name: java-app-jar
+        path: target/*.jar
 
   mvn-unit-test:
     runs-on: ubuntu-latest
@@ -44,8 +44,8 @@ jobs:
     - name: Download build artifacts
       uses: actions/download-artifact@v3
       with:
-        name: build-artifacts
-        path: demo/target/
+        name: java-app-jar
+        path: target/
       # Step 4: Save build artifact
     - name: Upload artifact
       uses: actions/upload-artifact@v3
@@ -71,4 +71,4 @@ jobs:
         with:
           name: java-app-jar
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag demo-app:$(date +%s)
+        run: docker build . --file Dockerfile --build-arg JAR_FILE=java-app-jar/app.jar --tag demo-app:$(date +%s)
