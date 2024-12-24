@@ -65,4 +65,4 @@ jobs:
       - name: ls
         run: ls -laR
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --build-arg JAR_FILE=java-app-jar/app.jar --tag demo-app:$(date +%s)
+        run: docker build . --file Dockerfile --tag demo-app:$(date +%s)
