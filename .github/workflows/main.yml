@@ -41,17 +41,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Download build artifacts
-      uses: actions/download-artifact@v3
-      with:
-        name: java-app-jar
-        path: target/
-      # Step 4: Save build artifact
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: java-app-jar
-        path: target/*.jar
     - name: Run unit tests
       run: |
         cd demo
