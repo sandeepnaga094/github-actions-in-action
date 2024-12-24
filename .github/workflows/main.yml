@@ -27,7 +27,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: java-app-jar
-        path: target/*.jar
+        path: demo/target/*
 
   mvn-unit-test:
     runs-on: ubuntu-latest
@@ -61,6 +61,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app-jar
+          path: demo/target/*
       - name: ls
         run: ls -la
       - name: Build the Docker image
