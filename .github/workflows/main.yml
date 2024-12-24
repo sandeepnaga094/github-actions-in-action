@@ -54,7 +54,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: ls
-        run: ls -la
+        run: ls -laR
 
       # Step 2: Download artifact
       - name: Download artifact
@@ -63,6 +63,6 @@ jobs:
           name: java-app-jar
           path: demo/target/*
       - name: ls
-        run: ls -la
+        run: ls -laR
       - name: Build the Docker image
         run: docker build . --file Dockerfile --build-arg JAR_FILE=java-app-jar/app.jar --tag demo-app:$(date +%s)
