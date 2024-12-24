@@ -61,5 +61,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: java-app-jar
+      - name: ls
+        run: ls -la
       - name: Build the Docker image
         run: docker build . --file Dockerfile --build-arg JAR_FILE=java-app-jar/app.jar --tag demo-app:$(date +%s)
