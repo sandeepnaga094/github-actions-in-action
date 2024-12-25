@@ -66,5 +66,5 @@ jobs:
         run: ls -laR
       - name: Build the Docker image
         run: |
-              ls demo/target
+              ls demo/target/*
               docker build . --file Dockerfile --tag demo-app:$(date +%s)
