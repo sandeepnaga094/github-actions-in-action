@@ -8,4 +8,4 @@ on:
 
 jobs:
   echo-job:
-    uses: sandeepnaga094/library/echo.yml@main
+    uses: sandeepnaga094/library/.github/workflows/echo.yml@main
