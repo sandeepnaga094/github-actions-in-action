@@ -23,6 +23,7 @@ on:
   #   - cron: ''
 
   # on: [workflow-dispatch, repository-dispatch]
+  # on: [push, tags, issuecomment, workflow-dispatch]
   # on: issuecomment
 
 ```
