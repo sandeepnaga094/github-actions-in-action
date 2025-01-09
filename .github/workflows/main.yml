@@ -26,8 +26,10 @@ jobs:
       - name: echo job
         run: echo "${{ inputs.fruit }}"
       - name: output job
-        run: echo "fruit=${{ inputs.fruit }}" >> "$GITHUB_OUTPUT"
-
+        run: echo "fruit=apple" >> "$GITHUB_OUTPUT"
+      - name: echo output var
+        run: echo ${{ needs.inputs-job.outputs.fruit_name }}
+        
   output-job:
     needs: [inputs-job]
     runs-on: ubuntu-latest
