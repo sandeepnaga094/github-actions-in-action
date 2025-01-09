@@ -17,13 +17,32 @@ on:
         default: "apple"
 
 jobs:
+  inputs-job:
+    runs-on: ubuntu-latest
+    outputs:
+      fruit_name: ${{ steps.step1.outputs.fruit }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: echo job
+        run: echo "${{ inputs.fruit }}"
+      - name: output job
+        run: echo "fruit=${{ inputs.fruit }}" >> "$GITHUB_OUTPUT"
+
+  output-job:
+    needs: [inputs-job]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: echo output var
+        run: echo ${{ needs.inputs-job.outputs.fruit_name }}
+        
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - name: echo job
-        run: echo "${{ inputs.fruit }}"
+        run: echo "build job"
 
   deploy-dev01:
     needs: [build]
