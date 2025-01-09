@@ -63,3 +63,4 @@ jobs:
       - name: Build the Docker image
         run: |
               docker build . --file Dockerfile --tag demo-app:$(date +%s)
+              
