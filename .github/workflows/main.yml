@@ -25,18 +25,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: echo job
         run: echo "${{ inputs.fruit }}"
-      - name: output job
-        run: echo "fruit=apple" >> "$GITHUB_OUTPUT"
-      - name: echo output var
-        run: echo ${{ needs.inputs-job.outputs.fruit_name }}
         
-  output-job:
-    needs: [inputs-job]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: echo output var
-        run: echo ${{ needs.inputs-job.outputs.fruit_name }}
         
   build:
     runs-on: ubuntu-latest
